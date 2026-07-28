@@ -1,3 +1,4 @@
+
 landmarks = {
     0: "St Albans Cathedral",
     1: "Verulamium Park and Verulamium Lake",
@@ -21,7 +22,15 @@ landmarks = {
     19: "The Vintry Garden"
 }
 
-x = landmarks.get(0)
-print(x)
+#x = landmarks.get(0)
+#print(x)
 
-print(landmarks[15])
+#print(landmarks[15])
+
+for i in range (20):
+    print(f"{i} : {landmarks[i]}")
+
+node = int(input("Enter a landmark number (0-19): "))
+
+print(f"you selected: {landmarks[node]}")
+
