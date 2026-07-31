@@ -83,6 +83,19 @@ while node1 < 0 or node1 > 19:
     
 print(f"you selected: {landmarks[node1]}")
 
+if node1 == 0:
+    closest_distance_neighbour = distances[node1][1]
+    closest_landmark = landmarks[1]
+else:
+    closest_distance_neighbour = distances[node1][0]
+    closest_landmark = landmarks[0]
+
 for i in landmarks:
-    if node1 != i:
-        print(f"the distance between {landmarks[node1]} to {landmarks[i]} is {distances[node1][i]} miles")
+    if i == node1:
+        continue 
+
+    if distances[node1][i] < closest_distance_neighbour:
+        closest_distance_neighbour = distances[node1][i]
+        closest_landmark = landmarks[i]
+        
+print(f"The closest landmark to {landmarks[node1]} is {closest_landmark} with a distance of {closest_distance_neighbour} miles.")
