@@ -44,12 +44,33 @@ distances = [
     [4.1, 3.8, 3.4, 3.5, 3.8, 3.7, 4.0, 4.0, 3.9, 4.1, 4.9, 4.1, 4.3, 4.0, 4.0, 3.5, 4.1, 4.7, 0.0, 4.0], 
     [0.1, 0.5, 0.8, 0.7, 0.6, 0.6, 0.1, 0.1, 0.3, 0.1, 0.8, 2.5, 2.7, 0.7, 0.5, 0.3, 0.3, 0.6, 4.0, 0.0] 
 ]
-# LANDMAR DICTIONARY CHECK
 
-#x = landmarks.get(0)
-#print(x)
+#parts 1 and 2:
 
-#print(landmarks[15])
+#for i in range (20):
+    #print(f"{i} : {landmarks[i]}")
+
+#node1 = int(input("Enter a landmark number (0-19): "))
+#while node1 < 0 or node1 > 19:
+    #print(f"Invalid. {node1} is not in the range of 0-19")
+    #print("Try again")
+    #node1 = int(input("Enter a landmark number (0-19): "))
+    
+#print(f"you selected: {landmarks[node1]}")
+
+#node2 =int(input("Enter a landmark number (0-19): "))
+#while node2 < 0 or node2 > 19:
+    #print(f"Invalid. {node2} is not in the range of 0-19")
+    #print("Try again")
+    #node2 = int(input("Enter a landmark number (0-19): "))
+
+#print(f"you selected: {landmarks[node2]}")
+
+#print("Calculating the distance between the two landmarks...")
+
+#print(f"the distance between {landmarks[node1]} to {landmarks[node2]} is {distances[node1][node2]} miles")
+
+# part 3:
 
 for i in range (20):
     print(f"{i} : {landmarks[i]}")
@@ -62,15 +83,6 @@ while node1 < 0 or node1 > 19:
     
 print(f"you selected: {landmarks[node1]}")
 
-node2 =int(input("Enter a landmark number (0-19): "))
-while node2 < 0 or node2 > 19:
-    print(f"Invalid. {node2} is not in the range of 0-19")
-    print("Try again")
-    node2 = int(input("Enter a landmark number (0-19): "))
-
-print(f"you selected: {landmarks[node2]}")
-
-print("Calculating the distance between the two landmarks...")
-
-print(f"the distance between {landmarks[node1]} to {landmarks[node2]} is {distances[node1][node2]} miles")
-
+for i in landmarks:
+    if node1 != i:
+        print(f"the distance between {landmarks[node1]} to {landmarks[i]} is {distances[node1][i]} miles")
