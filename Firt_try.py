@@ -70,12 +70,18 @@ distances = [
 
 #print(f"the distance between {landmarks[node1]} to {landmarks[node2]} is {distances[node1][node2]} miles")
 
-# part 3:
+# part 3 and 4:
 
 for i in range (20):
     print(f"{i} : {landmarks[i]}")
 
-node1 = int(input("Enter a landmark number (0-19): "))
+node1 = input("Enter a landmark number (0-19): ")
+while not node1.isdigit():
+    print(f"Invalid. {node1} is not a a whole number or its not even a number")
+    print("try again")
+    node1 = input("Enter a landmark number (0-19): ")
+
+node1 = int(node1)
 while node1 < 0 or node1 > 19:
     print(f"Invalid. {node1} is not in the range of 0-19")
     print("Try again")
