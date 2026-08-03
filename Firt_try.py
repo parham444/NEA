@@ -90,7 +90,9 @@ node1 = int(node1)
 while node1 < 0 or node1 > 19:
     print(f"Invalid. {node1} is not in the range of 0-19")
     print("Try again")
-    node1 = int(data_type_validation(node1))
+    node1 = input("Enter a landmark number (0-19) : ")
+    node1 = data_type_validation(node1)
+    node1 = int(node1)
     
 print(f"you selected: {landmarks[node1]}")
 
