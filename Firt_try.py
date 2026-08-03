@@ -75,17 +75,22 @@ distances = [
 for i in range (20):
     print(f"{i} : {landmarks[i]}")
 
-node1 = input("Enter a landmark number (0-19): ")
-while not node1.isdigit():
-    print(f"Invalid. {node1} is not a a whole number or its not even a number")
-    print("try again")
-    node1 = input("Enter a landmark number (0-19): ")
 
+def data_type_validation(node1):
+    while not node1.isdigit():
+        print(f"Invalid. {node1} is not a a whole number or its not even a number")
+        print("try again")
+        node1 = input("Enter a landmark number (0-19): ")
+    return node1
+
+node1 = input("Enter a landmark number (0-19): ")
+node1 =data_type_validation(node1)
 node1 = int(node1)
+
 while node1 < 0 or node1 > 19:
     print(f"Invalid. {node1} is not in the range of 0-19")
     print("Try again")
-    node1 = int(input("Enter a landmark number (0-19): "))
+    node1 = int(data_type_validation(node1))
     
 print(f"you selected: {landmarks[node1]}")
 
