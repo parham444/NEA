@@ -1,26 +1,169 @@
 
+
+# Time values are in MINUTES, cost values are in POUNDS (£)
 landmarks = {
-    0: "St Albans Cathedral",
-    1: "Verulamium Park and Verulamium Lake",
-    2: "The Roman Theatre of Verulamium",
-    3: "Verulamium Museum",
-    4: "The Roman Wall of St Albans",
-    5: "The Hypocaust and Roman Mosaic",
-    6: "St Albans Clock Tower",
-    7: "Abbey Gateway (The Great Gate)",
-    8: "Ye Olde Fighting Cocks Inn",
-    9: "St Albans Museum + Gallery (Old Town Hall)",
-    10: "Sopwell Nunnery Ruins (Lee Hall)",
-    11: "Old Gorhambury House",
-    12: "Gorhambury House",
-    13: "St Michael's Church",
-    14: "St Peter's Church",
-    15: "Fishpool Street Historic Area",
-    16: "St Albans Charter Market",
-    17: "St Albans South Signal Box",
-    18: "Redbournbury Watermill & Bakery",
-    19: "The Vintry Garden"
+    0: {
+        "name": "St Albans Cathedral",
+        "categories": ["historic", "religious"],
+        "time_no_ticket": 30,      # free entry; general visit browsing the nave/interior
+        "time_with_ticket": 60,    # optional donation-based tower tour / guided tour adds time
+        "ticket_cost": 5.00,       # estimated - optional tower tour donation, not compulsory
+        "visited": False
+    },
+    1: {
+        "name": "Verulamium Park and Verulamium Lake",
+        "categories": ["park", "outdoor"],
+        "time_no_ticket": 40,      # free public park, walk around lake/grounds
+        "time_with_ticket": 40,    # no ticketed element to the park itself
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    2: {
+        "name": "The Roman Theatre of Verulamium",
+        "categories": ["historic", "roman"],
+        "time_no_ticket": 0,       # cannot view without paying - gated site
+        "time_with_ticket": 30,
+        "ticket_cost": 3.00,       # confirmed via Gorhambury Estate site (adult price)
+        "visited": False
+    },
+    3: {
+        "name": "Verulamium Museum",
+        "categories": ["historic", "roman", "museum"],
+        "time_no_ticket": 0,       # cannot view without paying - ticketed museum
+        "time_with_ticket": 75,
+        "ticket_cost": 10.00,      # confirmed via stalbansmuseums.org.uk (adult price)
+        "visited": False
+    },
+    4: {
+        "name": "The Roman Wall of St Albans",
+        "categories": ["historic", "roman", "outdoor"],
+        "time_no_ticket": 15,      # free, outdoor remains viewable any time
+        "time_with_ticket": 15,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    5: {
+        "name": "The Hypocaust and Roman Mosaic",
+        "categories": ["historic", "roman"],
+        "time_no_ticket": 15,      # confirmed free to visit (stalbansmuseums.org.uk)
+        "time_with_ticket": 15,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    6: {
+        "name": "St Albans Clock Tower",
+        "categories": ["historic"],
+        "time_no_ticket": 10,      # viewing from outside, free
+        "time_with_ticket": 25,    # climbing the tower has a small entry fee (seasonal)
+        "ticket_cost": 1.00,       # estimated - small councils typically charge ~£1 for tower climbs
+        "visited": False
+    },
+    7: {
+        "name": "Abbey Gateway (The Great Gate)",
+        "categories": ["historic"],
+        "time_no_ticket": 10,      # viewed from outside, free (part of school grounds)
+        "time_with_ticket": 10,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    8: {
+        "name": "Ye Olde Fighting Cocks Inn",
+        "categories": ["historic", "food_drink"],
+        "time_no_ticket": 30,      # visiting as a pub - no entry fee, time = having a drink/meal
+        "time_with_ticket": 30,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    9: {
+        "name": "St Albans Museum + Gallery (Old Town Hall)",
+        "categories": ["museum", "art"],
+        "time_no_ticket": 45,      # estimated - free entry, typical small museum browsing time
+        "time_with_ticket": 45,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    10: {
+        "name": "Sopwell Nunnery Ruins (Lee Hall)",
+        "categories": ["historic"],
+        "time_no_ticket": 15,      # free outdoor ruins site
+        "time_with_ticket": 15,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    11: {
+        "name": "Old Gorhambury House",
+        "categories": ["historic"],
+        "time_no_ticket": 10,      # ruins visible from outside only, free
+        "time_with_ticket": 10,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    12: {
+        "name": "Gorhambury House",
+        "categories": ["historic", "art"],
+        "time_no_ticket": 0,       # private house - only accessible via guided tour
+        "time_with_ticket": 90,    # estimated - stately home guided tours typically ~1.5hrs
+        "ticket_cost": 12.00,      # estimated - comparable to similar small stately home tours
+        "visited": False
+    },
+    13: {
+        "name": "St Michael's Church",
+        "categories": ["historic", "religious"],
+        "time_no_ticket": 20,      # free entry parish church
+        "time_with_ticket": 20,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    14: {
+        "name": "St Peter's Church",
+        "categories": ["historic", "religious"],
+        "time_no_ticket": 20,      # free entry parish church
+        "time_with_ticket": 20,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    15: {
+        "name": "Fishpool Street Historic Area",
+        "categories": ["historic"],
+        "time_no_ticket": 20,      # free, walking through a historic street
+        "time_with_ticket": 20,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    16: {
+        "name": "St Albans Charter Market",
+        "categories": ["market", "shopping"],
+        "time_no_ticket": 30,      # free open-air market, browsing time
+        "time_with_ticket": 30,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    17: {
+        "name": "St Albans South Signal Box",
+        "categories": ["historic"],
+        "time_no_ticket": 15,      # viewed from outside; open days are free/donation-based
+        "time_with_ticket": 15,
+        "ticket_cost": 0.00,
+        "visited": False
+    },
+    18: {
+        "name": "Redbournbury Watermill & Bakery",
+        "categories": ["historic", "food_drink"],
+        "time_no_ticket": 20,      # estimated - free to look around bakery/shop area
+        "time_with_ticket": 45,    # guided mill tour on open days
+        "ticket_cost": 4.00,       # estimated - typical small working-mill tour price
+        "visited": False
+    },
+    19: {
+        "name": "The Vintry Garden",
+        "categories": ["park", "outdoor"],
+        "time_no_ticket": 10,      # free small public garden
+        "time_with_ticket": 10,
+        "ticket_cost": 0.00,
+        "visited": False
+    }
 }
+
 
 distances = [
     [0.0, 0.5, 0.9, 0.8, 0.6, 0.7, 0.1, 0.1, 0.2, 0.2, 0.9, 2.6, 2.8, 0.8, 0.6, 0.4, 0.2, 0.7, 4.1, 0.1], 
@@ -70,45 +213,53 @@ distances = [
 
 #print(f"the distance between {landmarks[node1]} to {landmarks[node2]} is {distances[node1][node2]} miles")
 
-# part 3 and 4:
+# @@@ part 3 and 4:
+
+#for i in range (20):
+    #print(f"{i} : {landmarks[i]}")
+
+
+#def data_type_validation(node1):
+#    while not node1.isdigit():
+#        print(f"Invalid. {node1} is not a a whole number or its not even a number")
+#        print("try again")
+#        node1 = input("Enter a landmark number (0-19): ")
+#    return node1
+
+#node1 = input("Enter a landmark number (0-19): ")
+#node1 =data_type_validation(node1)
+#node1 = int(node1)
+
+#while node1 < 0 or node1 > 19:
+#    print(f"Invalid. {node1} is not in the range of 0-19")
+#    print("Try again")
+#    node1 = input("Enter a landmark number (0-19) : ")
+#    node1 = data_type_validation(node1)
+#    node1 = int(node1)
+    
+#print(f"you selected: {landmarks[node1]}")
+
+#if node1 == 0:
+#    closest_distance_neighbour = distances[node1][1]
+#    closest_landmark = landmarks[1]
+#else:
+#    closest_distance_neighbour = distances[node1][0]
+#    closest_landmark = landmarks[0]
+
+#for i in landmarks:
+#    if i == node1:
+#        continue 
+
+#    if distances[node1][i] < closest_distance_neighbour:
+#        closest_distance_neighbour = distances[node1][i]
+#        closest_landmark = landmarks[i]
+#        
+#print(f"The closest landmark to {landmarks[node1]} is {closest_landmark} with a distance of {closest_distance_neighbour} miles.")
+
+# ~~~~SPRINT 2~~~~:
 
 for i in range (20):
-    print(f"{i} : {landmarks[i]}")
-
-
-def data_type_validation(node1):
-    while not node1.isdigit():
-        print(f"Invalid. {node1} is not a a whole number or its not even a number")
-        print("try again")
-        node1 = input("Enter a landmark number (0-19): ")
-    return node1
-
-node1 = input("Enter a landmark number (0-19): ")
-node1 =data_type_validation(node1)
-node1 = int(node1)
-
-while node1 < 0 or node1 > 19:
-    print(f"Invalid. {node1} is not in the range of 0-19")
-    print("Try again")
-    node1 = input("Enter a landmark number (0-19) : ")
-    node1 = data_type_validation(node1)
-    node1 = int(node1)
-    
-print(f"you selected: {landmarks[node1]}")
-
-if node1 == 0:
-    closest_distance_neighbour = distances[node1][1]
-    closest_landmark = landmarks[1]
-else:
-    closest_distance_neighbour = distances[node1][0]
-    closest_landmark = landmarks[0]
-
-for i in landmarks:
-    if i == node1:
-        continue 
-
-    if distances[node1][i] < closest_distance_neighbour:
-        closest_distance_neighbour = distances[node1][i]
-        closest_landmark = landmarks[i]
-        
-print(f"The closest landmark to {landmarks[node1]} is {closest_landmark} with a distance of {closest_distance_neighbour} miles.")
+    if landmarks[i]["visited"] == True:
+        print(f"{i} : (THIS IS A VISITED LANDMARK) Landmark name = {landmarks[i]["name"]}, Categories = {", " .join(landmarks[i]["categories"])}, Time without ticket = {landmarks[i]["time_no_ticket"]} minutes, Time with ticket = {landmarks[i]["time_with_ticket"]} minutes, Ticket cost = £{landmarks[i]["ticket_cost"]:.2f} ")
+    else:
+        print(f"{i} : Landmark name = {landmarks[i]["name"]}, Categories = {", " .join(landmarks[i]["categories"])}, Time without ticket = {landmarks[i]["time_no_ticket"]} minutes, Time with ticket = {landmarks[i]["time_with_ticket"]} minutes, Ticket cost = £{landmarks[i]["ticket_cost"]:.2f} ")
