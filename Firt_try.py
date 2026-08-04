@@ -8,7 +8,7 @@ landmarks = {
         "time_no_ticket": 30,      # free entry; general visit browsing the nave/interior
         "time_with_ticket": 60,    # optional donation-based tower tour / guided tour adds time
         "ticket_cost": 5.00,       # estimated - optional tower tour donation, not compulsory
-        "visited": False
+        "visited": False 
     },
     1: {
         "name": "Verulamium Park and Verulamium Lake",
