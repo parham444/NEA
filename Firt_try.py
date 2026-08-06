@@ -22,9 +22,9 @@ def data_type_validation(parameter, location):
         print(f"Invalid. {parameter} is not a a whole number or its not even a number")
         print("try again")
         if location == "hours":
-            parameter = input("Enter the number of hours you have: ")
+            parameter = input("Enter the number of hours you have (0-23): ")
         elif location == "minutes":
-            parameter = input("Enter the number of minutes you have: ")
+            parameter = input("Enter the number of minutes you have (0-59): ")
         elif location == "landmark":
             parameter = input("Enter a landmark number (0-19): ")
     return parameter
