@@ -17,12 +17,17 @@ user_preferred_categories = {}
 time_limit = 0
 budget_limit = 0
 
-def data_type_validation(node1):
-    while not node1.isdigit():
-        print(f"Invalid. {node1} is not a a whole number or its not even a number")
+def data_type_validation(parameter, location):
+    while not parameter.isdigit():
+        print(f"Invalid. {parameter} is not a a whole number or its not even a number")
         print("try again")
-        node1 = input("Enter a landmark number (0-19): ")
-    return node1
+        if location == "hours":
+            parameter = input("Enter the number of hours you have: ")
+        elif location == "minutes":
+            parameter = input("Enter the number of minutes you have: ")
+        elif location == "landmark":
+            parameter = input("Enter a landmark number (0-19): ")
+    return parameter
 
 print("Welcome to the St Albans Landmarks Explorer!")
 
@@ -33,19 +38,19 @@ print("You are not allowed to enter negative numbers or numbers greater than 23 
 hours_box_time_limit = input("Enter the number of hours you have: ")
 minutes_box_time_limit = input("Enter the number of minutes you have: ")
 
-hours_box_time_limit = int(data_type_validation(hours_box_time_limit))
+hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
 while hours_box_time_limit <0 or hours_box_time_limit >23:
-    print(f"invalid. {hours_box_time_limit} is not in the range of 0-23")
+    print(f"invalid. {hours_box_time_limit} is not in the range of 0-23 for the hours box")
     print("Try again")
     hours_box_time_limit = input("Enter the number of hours you have: ")
-    hours_box_time_limit = int(data_type_validation(hours_box_time_limit))
+    hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
 
-minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit))
+minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
 while minutes_box_time_limit <0 or minutes_box_time_limit >59:
-    print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59")
+    print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59 for the minutes box")
     print("Try again")
     minutes_box_time_limit = input("Enter the number of minutes you have: ")
-    minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit))
+    minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
 
 time_limit += (hours_box_time_limit * 60) + minutes_box_time_limit
 
