@@ -30,35 +30,51 @@ def data_type_validation(parameter, location):
     return parameter
 
 print("Welcome to the St Albans Landmarks Explorer!")
-
-print("Here you can submit your time limit, you can do this by entering the time you have into two boxes of hours and minutes.")
-print("For example, if you have 2 hours and 30 minutes, you yould enter 2 into ther hours box and 30 into the minutes box.")
-print("Also you must enter your time limit in whole numbers only.")
-print("You are not allowed to enter negative numbers or numbers greater than 23 for the hours box and 59 for the minutes box.")
-hours_box_time_limit = input("Enter the number of hours you have: ")
-minutes_box_time_limit = input("Enter the number of minutes you have: ")
-
-hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
-while hours_box_time_limit <0 or hours_box_time_limit >23:
-    print(f"invalid. {hours_box_time_limit} is not in the range of 0-23 for the hours box")
-    print("Try again")
+def get_user_time_limit():
+    time_limit =0
+    print("Here you can submit your time limit, you can do this by entering the time you have into two boxes of hours and minutes.")
+    print("For example, if you have 2 hours and 30 minutes, you yould enter 2 into ther hours box and 30 into the minutes box.")
+    print("Also you must enter your time limit in whole numbers only.")
+    print("You are not allowed to enter negative numbers or numbers greater than 23 for the hours box and 59 for the minutes box.")
     hours_box_time_limit = input("Enter the number of hours you have: ")
-    hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
-
-minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
-while minutes_box_time_limit <0 or minutes_box_time_limit >59:
-    print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59 for the minutes box")
-    print("Try again")
     minutes_box_time_limit = input("Enter the number of minutes you have: ")
+
+    hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
+    while hours_box_time_limit <0 or hours_box_time_limit >23:
+        print(f"invalid. {hours_box_time_limit} is not in the range of 0-23 for the hours box")
+        print("Try again")
+        hours_box_time_limit = input("Enter the number of hours you have: ")
+        hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
+
     minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
+    while minutes_box_time_limit <0 or minutes_box_time_limit >59:
+        print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59 for the minutes box")
+        print("Try again")
+        minutes_box_time_limit = input("Enter the number of minutes you have: ")
+        minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
 
-time_limit += (hours_box_time_limit * 60) + minutes_box_time_limit
+    time_limit += (hours_box_time_limit * 60) + minutes_box_time_limit
 
-print(f"Your time limit is {hours_box_time_limit} hours and {minutes_box_time_limit} minutes.")
+    print(f"Your time limit is {hours_box_time_limit} hours and {minutes_box_time_limit} minutes.")
 
+    return time_limit
 
+time_limit = get_user_time_limit()
 
+con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
 
+while con_time_limit.lower() not in ["yes", "no"]:
+    print(f"Invalid. {con_time_limit} is not a valid response. Please enter 'yes' or 'no'.")
+    con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
+
+while con_time_limit.lower() == "no":
+    time_limit = get_user_time_limit()
+    con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
+    while con_time_limit.lower() not in ["yes", "no"]:
+        print(f"Invalid. {con_time_limit} is not a valid response. Please enter 'yes' or 'no'.")
+        con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
+
+print(time_limit)
 # Time values are in MINUTES, cost values are in POUNDS (£)
 landmarks = {
     0: {
