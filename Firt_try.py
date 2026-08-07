@@ -14,7 +14,6 @@ categories = [
 
 user_preferred_categories = {}
 
-time_limit = 0
 budget_limit = 0
 
 def data_type_validation(parameter, location):
@@ -74,7 +73,7 @@ while con_time_limit.lower() == "no":
         print(f"Invalid. {con_time_limit} is not a valid response. Please enter 'yes' or 'no'.")
         con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
 
-print(time_limit)
+
 # Time values are in MINUTES, cost values are in POUNDS (£)
 landmarks = {
     0: {
