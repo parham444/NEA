@@ -15,10 +15,10 @@ categories = [
 user_preferred_categories = {}
 
 budget_limit = 0
-
+# For the 
 def data_type_validation(parameter, location):
     while not parameter.isdigit():
-        print(f"Invalid. {parameter} is not a a whole number or its not even a number")
+        print(f"Invalid. {parameter} is not a a whole number or its not even a positive number")
         print("try again")
         if location == "hours":
             parameter = input("Enter the number of hours you have (0-23): ")
@@ -43,14 +43,14 @@ def get_user_time_limit():
     minutes_box_time_limit = input("Enter the number of minutes you have: ")
 
     hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
-    while hours_box_time_limit <0 or hours_box_time_limit >23:
+    while  hours_box_time_limit >23:
         print(f"invalid. {hours_box_time_limit} is not in the range of 0-23 for the hours box")
         print("Try again")
         hours_box_time_limit = input("Enter the number of hours you have: ")
         hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
 
     minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
-    while minutes_box_time_limit <0 or minutes_box_time_limit >59:
+    while  minutes_box_time_limit >59:
         print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59 for the minutes box")
         print("Try again")
         minutes_box_time_limit = input("Enter the number of minutes you have: ")
@@ -63,14 +63,14 @@ def get_user_time_limit():
         minutes_box_time_limit = input("Enter the number of minutes you have: ")
 
         hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
-        while hours_box_time_limit <0 or hours_box_time_limit >23:
+        while  hours_box_time_limit >23:
             print(f"invalid. {hours_box_time_limit} is not in the range of 0-23 for the hours box")
             print("Try again")
             hours_box_time_limit = input("Enter the number of hours you have: ")
             hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
 
         minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
-        while minutes_box_time_limit <0 or minutes_box_time_limit >59:
+        while  minutes_box_time_limit >59:
             print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59 for the minutes box")
             print("Try again")
             minutes_box_time_limit = input("Enter the number of minutes you have: ")
@@ -108,12 +108,8 @@ pence_box_budget_limit = input("Enter your budget limit in pence (0-99): ")
 pounds_box_budget_limit = int(data_type_validation(pounds_box_budget_limit, "pounds"))
 pence_box_budget_limit = int(data_type_validation(pence_box_budget_limit, "pence"))
 
-while pounds_box_budget_limit < 0:
-    print(f"Invalid. {pounds_box_budget_limit} is not a valid amount for pounds. It cannot be negative.")
-    pounds_box_budget_limit = input("Enter your budget limit in pounds (£): ")
-    pounds_box_budget_limit = int(data_type_validation(pounds_box_budget_limit, "pounds"))
 
-while pence_box_budget_limit < 0 or pence_box_budget_limit > 99:
+while  pence_box_budget_limit > 99:
     print(f"Invalid. {pence_box_budget_limit} is not a valid amount for pence. It must be between 0 and 99.")
     pence_box_budget_limit = input("Enter your budget limit in pence (0-99): ")
     pence_box_budget_limit = int(data_type_validation(pence_box_budget_limit, "pence"))
