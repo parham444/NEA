@@ -56,6 +56,26 @@ def get_user_time_limit():
         minutes_box_time_limit = input("Enter the number of minutes you have: ")
         minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
 
+    while hours_box_time_limit == 0 and minutes_box_time_limit == 0:
+        print("Invalid. You cannot enter 0 hours and 0 minutes as your time limit.")
+        print("Try again")
+        hours_box_time_limit = input("Enter the number of hours you have: ")
+        minutes_box_time_limit = input("Enter the number of minutes you have: ")
+
+        hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
+        while hours_box_time_limit <0 or hours_box_time_limit >23:
+            print(f"invalid. {hours_box_time_limit} is not in the range of 0-23 for the hours box")
+            print("Try again")
+            hours_box_time_limit = input("Enter the number of hours you have: ")
+            hours_box_time_limit = int(data_type_validation(hours_box_time_limit, "hours"))
+
+        minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
+        while minutes_box_time_limit <0 or minutes_box_time_limit >59:
+            print(f"invalid. {minutes_box_time_limit} is not in the range of 0-59 for the minutes box")
+            print("Try again")
+            minutes_box_time_limit = input("Enter the number of minutes you have: ")
+            minutes_box_time_limit = int(data_type_validation(minutes_box_time_limit, "minutes"))
+
     time_limit += (hours_box_time_limit * 60) + minutes_box_time_limit
 
     print(f"Your time limit is {hours_box_time_limit} hours and {minutes_box_time_limit} minutes.")
