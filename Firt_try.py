@@ -1,21 +1,10 @@
 #Settings
-categories = [
-    "historic",
-    "religious",
-    "park",
-    "outdoor",
-    "roman",
-    "museum",
-    "art",
-    "food_drink",
-    "market",
-    "shopping"
-]
+categories = ["historic", "religious", "park", "outdoor", "roman", "museum", "art", "food_drink", "market", "shopping"]
 
 user_preferred_categories = {}
 
-budget_limit = 0
-# For the 
+
+# time limit
 def data_type_validation(parameter, location):
     while not parameter.isdigit():
         print(f"Invalid. {parameter} is not a a whole number or its not even a positive number")
@@ -30,6 +19,8 @@ def data_type_validation(parameter, location):
             parameter = input("Enter your budget limit in pounds (£): ")
         elif location == "pence":
             parameter = input("Enter your budget limit in pence (0-99): ")
+        elif location in categories:
+            parameter = input(f"Please rank {location} from 0 to 5: ")
     return parameter
 
 print("Welcome to the St Albans Landmarks Explorer!")
@@ -137,6 +128,23 @@ while con_budget_limit.lower() == "no":
     while con_budget_limit.lower() not in ["yes", "no"]:
         print(f"Invalid. {con_budget_limit} is not a valid response. Please enter 'yes' or 'no'.")
         con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
+
+
+# User preferred categories
+print("Now you can rank your preferred categories from 0 to 5.")
+print("0 = Not interested, 1 = Slightly interested, 2 = Moderately interested, 3 = Interested, 4 = Very interested, 5 = Extremely interested")
+print("You will be asked to rank each category one by one. if you dont want to rank a category, you can enter 0 for that category.")
+
+for category in categories:
+    rank = input(f"Please rank {category} from 0 to 5: ")
+    rank = int(data_type_validation(rank, category))
+    while rank > 5:
+        print(f"Invalid. {rank} is not in the range of 0-5 for the category {category}.")
+        print("Try again")
+        rank = input(f"Please rank {category} from 0 to 5: ")
+        rank = int(data_type_validation(rank, category))
+    user_preferred_categories[category] = rank
+
 
 
 
