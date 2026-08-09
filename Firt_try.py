@@ -98,26 +98,47 @@ while con_time_limit.lower() == "no":
         con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
 
 # budget limit:
-print("here you can submit your budget limit, you can do this by entering the amount of budget that you have into two boxes of pounds and pence.")
-print("for example, if you have £20.50, you would enter 20 into the pounds box and 50 into the pence box.")
-print("Also you must enter your time limit in whole numbers only.")
-pounds_box_budget_limit = input("Enter your budget limit in pounds (£): ")
-pence_box_budget_limit = input("Enter your budget limit in pence (0-99): ")
-
-# Validate the input for pounds and pence
-pounds_box_budget_limit = int(data_type_validation(pounds_box_budget_limit, "pounds"))
-pence_box_budget_limit = int(data_type_validation(pence_box_budget_limit, "pence"))
-
-
-while  pence_box_budget_limit > 99:
-    print(f"Invalid. {pence_box_budget_limit} is not a valid amount for pence. It must be between 0 and 99.")
+def get_user_budget_limit():
+    budget_limit = 0
+    print("Here you can submit your budget limit, you can do this by entering the amount of budget that you have into two boxes of pounds and pence.")
+    print("For example, if you have £20.50, you would enter 20 into the pounds box and 50 into the pence box.")
+    print("Also you must enter your time limit in whole numbers only.")
+    pounds_box_budget_limit = input("Enter your budget limit in pounds (£): ")
     pence_box_budget_limit = input("Enter your budget limit in pence (0-99): ")
+
+    # Validate the input for pounds and pence
+    pounds_box_budget_limit = int(data_type_validation(pounds_box_budget_limit, "pounds"))
     pence_box_budget_limit = int(data_type_validation(pence_box_budget_limit, "pence"))
 
-# Convert the budget to a single value in pounds
-budget_limit = pounds_box_budget_limit + (pence_box_budget_limit / 100)
 
-print(f"Your budget limit is £{budget_limit:.2f}")
+    while  pence_box_budget_limit > 99:
+        print(f"Invalid. {pence_box_budget_limit} is not a valid amount for pence. It must be between 0 and 99.")
+        pence_box_budget_limit = input("Enter your budget limit in pence (0-99): ")
+        pence_box_budget_limit = int(data_type_validation(pence_box_budget_limit, "pence"))
+
+    # Convert the budget to a single value in pounds
+    budget_limit = pounds_box_budget_limit + (pence_box_budget_limit / 100)
+
+    print(f"Your budget limit is £{budget_limit:.2f}")
+
+    return budget_limit
+
+budget_limit = get_user_budget_limit()
+
+con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
+
+while con_budget_limit.lower() not in ["yes", "no"]:
+    print(f"Invalid. {con_budget_limit} is not a valid response. Please enter 'yes' or 'no'.")
+    con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
+
+while con_budget_limit.lower() == "no":
+    budget_limit = get_user_budget_limit()
+    con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
+    while con_budget_limit.lower() not in ["yes", "no"]:
+        print(f"Invalid. {con_budget_limit} is not a valid response. Please enter 'yes' or 'no'.")
+        con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
+
+
 
 # Time values are in MINUTES, cost values are in POUNDS (£)
 landmarks = {
