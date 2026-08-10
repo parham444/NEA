@@ -143,6 +143,7 @@ for category in categories:
         print("Try again")
         rank = input(f"Please rank {category} from 0 to 5: ")
         rank = int(data_type_validation(rank, category))
+    print(f"You ranked {category} as {rank}.")
     user_preferred_categories[category] = rank
 
 
