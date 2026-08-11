@@ -165,12 +165,12 @@ while con_user_preferred_categories.lower() == "yes":
 
     new_rank = input(f"Please enter the new rank for {category_to_change.lower()} from 0 to 5: ")
 
-    new_rank = int(data_type_validation(new_rank, category_to_change))
+    new_rank = int(data_type_validation(new_rank, category_to_change.lower()))
     while new_rank > 5:
         print(f"Invalid. {new_rank} is not in the range of 0-5 for the category {category_to_change.lower()}.")
         print("Try again")
         new_rank = input(f"Please enter the new rank for {category_to_change.lower()} from 0 to 5: ")
-        new_rank = int(data_type_validation(new_rank, category_to_change))
+        new_rank = int(data_type_validation(new_rank, category_to_change.lower()))
 
     print(f"You changed the rank for {category_to_change.lower()} to {new_rank}.")
     user_preferred_categories[category_to_change.lower()] = new_rank
