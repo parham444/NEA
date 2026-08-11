@@ -155,7 +155,7 @@ while con_user_preferred_categories.lower() not in ["yes", "no"]:
     print(f"Invalid. {con_user_preferred_categories} is not a valid response. Please enter 'yes' or 'no'.")
     con_user_preferred_categories = input("Do you want to change the category rankings you have entered? (yes/no): ")
 
-while con_user_preferred_categories.lower() == "no":
+while con_user_preferred_categories.lower() == "yes":                                                                                                                  
     print("Which category would you like to change the ranking for?")
     category_to_change = input(f"Please enter the category name from the following list: {', '.join(user_preferred_categories.keys())}: ")
 
@@ -163,20 +163,20 @@ while con_user_preferred_categories.lower() == "no":
         print(f"Invalid. {category_to_change} is not a valid category name.")
         category_to_change = input(f"Please enter the category name from the following list: {', '.join(user_preferred_categories.keys())}: ")
 
-    new_rank = input(f"Please enter the new rank for {category_to_change} from 0 to 5: ")
+    new_rank = input(f"Please enter the new rank for {category_to_change.lower()} from 0 to 5: ")
 
     new_rank = int(data_type_validation(new_rank, category_to_change))
     while new_rank > 5:
-        print(f"Invalid. {new_rank} is not in the range of 0-5 for the category {category_to_change}.")
+        print(f"Invalid. {new_rank} is not in the range of 0-5 for the category {category_to_change.lower()}.")
         print("Try again")
-        new_rank = input(f"Please enter the new rank for {category_to_change} from 0 to 5: ")
+        new_rank = input(f"Please enter the new rank for {category_to_change.lower()} from 0 to 5: ")
         new_rank = int(data_type_validation(new_rank, category_to_change))
 
-    print(f"You changed the rank for {category_to_change} to {new_rank}.")
-    user_preferred_categories[category_to_change] = new_rank
+    print(f"You changed the rank for {category_to_change.lower()} to {new_rank}.")
+    user_preferred_categories[category_to_change.lower()] = new_rank
 
     for i in user_preferred_categories:
-    print(f"{i}: {user_preferred_categories[i]}")
+        print(f"{i}: {user_preferred_categories[i]}")
     con_user_preferred_categories = input("Do you want to change the category rankings you have entered? (yes/no): ")
 
 print("Thank you for providing your preferences and limitations. We will now use this information to suggest landmarks that match your interests, time limit, and budget limit.")
