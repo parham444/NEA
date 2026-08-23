@@ -23,6 +23,8 @@ def data_type_validation(parameter, location):
             parameter = input(f"Please rank {location} from 0 to 5: ")
         elif location == "landmark_selection":
             parameter = input("Enter a landmark number (0-19): ")
+        elif location == "tickets":
+            parameter = input("How many tickets do you want to purchase? you cannot purchase more than 6 tickets for a landmark: ")
     return parameter
 
 print("Welcome to the St Albans Landmarks Explorer!")
@@ -460,8 +462,14 @@ print("You will be asked to enter the landmark number one by one. If you want to
 print("You can also decide whether you want to visit the landmark with or without a ticket. If you choose to visit with a ticket, the time and cost will be added to your total time and budget limit.")
 print("Please note that you cannot select the same landmark more than once. If you try to select a landmark that you have already selected, you will be asked to choose a different landmark.")
 print("The first landmark you select will be your starting point, and the last landmark will be your ending point. You can change that at the end of the selection process if you want to.")
+print("You can also change your mind about visiting a landmark with or without a ticket after you have entered 'done'.")
+print("you cannot input done as your first input, you must select at least one landmark to visit.")
 
-user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
+user_landmark_selection = input("Enter a landmark number (0-19): ")
+
+while user_landmark_selection.lower() == "done":
+    print("You have not selected any landmarks to visit.")
+    user_landmark_selection = input("Enter a landmark number (0-19): ")
 
 while user_landmark_selection.lower() != "done":
     user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
@@ -484,7 +492,14 @@ while user_landmark_selection.lower() != "done":
             user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
 
     if user_wants_ticket.lower() == "yes":
-        budget_limit -= landmarks[user_landmark_selection]["ticket_cost"]
+        number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
+        number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
+        while number_of_tickets > 6:
+            print(f"Invalid.  you cannot purchase {number_of_tickets} tickets for {landmarks[user_landmark_selection]['name']}.")
+            print("Try again")
+            number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
+            number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
+        budget_limit -= landmarks[user_landmark_selection]["ticket_cost"] * number_of_tickets
         time_limit -= landmarks[user_landmark_selection]["time_with_ticket"]
     else:
         time_limit -= landmarks[user_landmark_selection]["time_no_ticket"]
