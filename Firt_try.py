@@ -470,45 +470,8 @@ user_landmark_selection = input("Enter a landmark number (0-19): ")
 while user_landmark_selection.lower() == "done":
     print("You have not selected any landmarks to visit.")
     user_landmark_selection = input("Enter a landmark number (0-19): ")
-
-while user_landmark_selection.lower() != "done":
-    user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
-
-    while user_landmark_selection > 19:
-        print(f"Invalid. {user_landmark_selection} is not in the range of 0-19")
-        print("Try again")
-        user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
-        if user_landmark_selection.lower() == "done":
-            break
-        user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
-
-    if landmarks[user_landmark_selection]["ticket_cost"] == 0.00:
-        user_wants_ticket = "no"
-        print(f"{landmarks[user_landmark_selection]['name']} does not offer any tickets for entry, so you will be visiting without a ticket.")
-    else:
-        user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
-        while user_wants_ticket.lower() not in ["yes", "no"]:
-            print(f"Invalid. {user_wants_ticket} is not a valid response. Please enter 'yes' or 'no'.")
-            user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
-
-    if user_wants_ticket.lower() == "yes":
-        number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
-        number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
-        while number_of_tickets > 6:
-            print(f"Invalid.  you cannot purchase {number_of_tickets} tickets for {landmarks[user_landmark_selection]['name']}.")
-            print("Try again")
-            number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
-            number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
-        budget_limit -= landmarks[user_landmark_selection]["ticket_cost"] * number_of_tickets
-        time_limit -= landmarks[user_landmark_selection]["time_with_ticket"]
-    else:
-        time_limit -= landmarks[user_landmark_selection]["time_no_ticket"]
-
-    while budget_limit < 0 or time_limit < 0:
-        print("You have exceeded your budget or time limit. Please select a different landmark or choose to visit without a ticket.")
-        user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
-        if user_landmark_selection.lower() == "done":
-            break
+def manual_landmark_selection():
+    while user_landmark_selection.lower() != "done":
         user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
 
         while user_landmark_selection > 19:
@@ -519,31 +482,76 @@ while user_landmark_selection.lower() != "done":
                 break
             user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
 
-        user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
-        while user_wants_ticket.lower() not in ["yes", "no"]:
-            print(f"Invalid. {user_wants_ticket} is not a valid response. Please enter 'yes' or 'no'.")
+        if landmarks[user_landmark_selection]["ticket_cost"] == 0.00:
+            user_wants_ticket = "no"
+            print(f"{landmarks[user_landmark_selection]['name']} does not offer any tickets for entry, so you will be visiting without a ticket.")
+        else:
             user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
+            while user_wants_ticket.lower() not in ["yes", "no"]:
+                print(f"Invalid. {user_wants_ticket} is not a valid response. Please enter 'yes' or 'no'.")
+                user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
 
         if user_wants_ticket.lower() == "yes":
-            budget_limit -= landmarks[user_landmark_selection]["ticket_cost"]
+            number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
+            number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
+            while number_of_tickets > 6:
+                print(f"Invalid.  you cannot purchase {number_of_tickets} tickets for {landmarks[user_landmark_selection]['name']}.")
+                print("Try again")
+                number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
+                number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
+            budget_limit -= landmarks[user_landmark_selection]["ticket_cost"] * number_of_tickets
             time_limit -= landmarks[user_landmark_selection]["time_with_ticket"]
         else:
             time_limit -= landmarks[user_landmark_selection]["time_no_ticket"]
 
-    if user_landmark_selection not in user_selected_landmarks:
-        user_selected_landmarks.append(user_landmark_selection)
-    else:
-        print(f"You have already selected {landmarks[user_landmark_selection]['name']}. Please choose a different landmark.")
+        while budget_limit < 0 or time_limit < 0:
 
-    if user_wants_ticket.lower() == "yes":
-        print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} with a ticket, which costs £{landmarks[user_landmark_selection]['ticket_cost']:.2f}.")
-    elif landmarks[user_landmark_selection]["ticket_cost"] == 0.00:
-        print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} without a ticket, which is free of charge.")
-    else:
-        print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} without a ticket.")
+            if budget_limit < 0 and time_limit < 0:
+                print("You have exceeded both your budget and time limit. Please select a different landmark or choose to visit without a ticket.")
+            elif budget_limit < 0:
+                print("You have exceeded your budget limit. Please select a different landmark or choose to visit without a ticket.")
+            elif time_limit < 0:
+                print("You have exceeded your time limit. Please select a different landmark or choose to visit without a ticket.")
+            
+            print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
 
-    print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
+            if user_wants_ticket.lower() == "yes":
+                budget_limit += landmarks[user_landmark_selection]["ticket_cost"] * number_of_tickets
+                time_limit += landmarks[user_landmark_selection]["time_with_ticket"]
+            else:
+                time_limit += landmarks[user_landmark_selection]["time_no_ticket"]
 
-    user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
+            if not user_selected_landmarks :
+                print("You have not selected any landmarks to visit.")
+                user_landmark_selection = input("Enter a landmark number (0-19): ")
+                while user_landmark_selection.lower() == "done":
+                    print("You have not selected any landmarks to visit.")
+                    user_landmark_selection = input("Enter a landmark number (0-19): ")
+            else:
+                user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
+
+            manual_landmark_selection()
+
+
+        if user_landmark_selection.lower() == "done":
+            break
+        else:
+            if user_landmark_selection not in user_selected_landmarks:
+                user_selected_landmarks.append(user_landmark_selection)
+            else:
+                print(f"You have already selected {landmarks[user_landmark_selection]['name']}. Please choose a different landmark.")
+
+            if user_wants_ticket.lower() == "yes":
+                print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} with a ticket, which costs £{landmarks[user_landmark_selection]['ticket_cost']:.2f}.")
+            elif landmarks[user_landmark_selection]["ticket_cost"] == 0.00:
+                print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} without a ticket, which is free of charge.")
+            else:
+                print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} without a ticket.")
+
+            print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
+
+            user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
+
+
 
 
