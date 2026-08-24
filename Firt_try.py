@@ -198,7 +198,8 @@ landmarks = {
         "time_no_ticket": 30,      # free entry; general visit browsing the nave/interior
         "time_with_ticket": 60,    # optional donation-based tower tour / guided tour adds time
         "ticket_cost": 5.00,       # estimated - optional tower tour donation, not compulsory
-        "visited": False 
+        "visited": False,
+        "have_tickets": False
     },
     1: {
         "name": "Verulamium Park and Verulamium Lake",
@@ -206,7 +207,8 @@ landmarks = {
         "time_no_ticket": 40,      # free public park, walk around lake/grounds
         "time_with_ticket": 40,    # no ticketed element to the park itself
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     2: {
         "name": "The Roman Theatre of Verulamium",
@@ -214,7 +216,8 @@ landmarks = {
         "time_no_ticket": 0,       # cannot view without paying - gated site
         "time_with_ticket": 30,
         "ticket_cost": 3.00,       # confirmed via Gorhambury Estate site (adult price)
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     3: {
         "name": "Verulamium Museum",
@@ -222,7 +225,8 @@ landmarks = {
         "time_no_ticket": 0,       # cannot view without paying - ticketed museum
         "time_with_ticket": 75,
         "ticket_cost": 10.00,      # confirmed via stalbansmuseums.org.uk (adult price)
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     4: {
         "name": "The Roman Wall of St Albans",
@@ -230,7 +234,8 @@ landmarks = {
         "time_no_ticket": 15,      # free, outdoor remains viewable any time
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     5: {
         "name": "The Hypocaust and Roman Mosaic",
@@ -238,7 +243,8 @@ landmarks = {
         "time_no_ticket": 15,      # confirmed free to visit (stalbansmuseums.org.uk)
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     6: {
         "name": "St Albans Clock Tower",
@@ -246,7 +252,8 @@ landmarks = {
         "time_no_ticket": 10,      # viewing from outside, free
         "time_with_ticket": 25,    # climbing the tower has a small entry fee (seasonal)
         "ticket_cost": 1.00,       # estimated - small councils typically charge ~£1 for tower climbs
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     7: {
         "name": "Abbey Gateway (The Great Gate)",
@@ -254,7 +261,8 @@ landmarks = {
         "time_no_ticket": 10,      # viewed from outside, free (part of school grounds)
         "time_with_ticket": 10,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     8: {
         "name": "Ye Olde Fighting Cocks Inn",
@@ -262,7 +270,8 @@ landmarks = {
         "time_no_ticket": 30,      # visiting as a pub - no entry fee, time = having a drink/meal
         "time_with_ticket": 30,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     9: {
         "name": "St Albans Museum + Gallery (Old Town Hall)",
@@ -270,7 +279,8 @@ landmarks = {
         "time_no_ticket": 45,      # estimated - free entry, typical small museum browsing time
         "time_with_ticket": 45,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     10: {
         "name": "Sopwell Nunnery Ruins (Lee Hall)",
@@ -278,7 +288,8 @@ landmarks = {
         "time_no_ticket": 15,      # free outdoor ruins site
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     11: {
         "name": "Old Gorhambury House",
@@ -286,7 +297,8 @@ landmarks = {
         "time_no_ticket": 10,      # ruins visible from outside only, free
         "time_with_ticket": 10,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False, 
+        "have_tickets": False
     },
     12: {
         "name": "Gorhambury House",
@@ -294,7 +306,8 @@ landmarks = {
         "time_no_ticket": 0,       # private house - only accessible via guided tour
         "time_with_ticket": 90,    # estimated - stately home guided tours typically ~1.5hrs
         "ticket_cost": 12.00,      # estimated - comparable to similar small stately home tours
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     13: {
         "name": "St Michael's Church",
@@ -302,7 +315,8 @@ landmarks = {
         "time_no_ticket": 20,      # free entry parish church
         "time_with_ticket": 20,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False, 
+        "have_tickets": False
     },
     14: {
         "name": "St Peter's Church",
@@ -310,7 +324,8 @@ landmarks = {
         "time_no_ticket": 20,      # free entry parish church
         "time_with_ticket": 20,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     15: {
         "name": "Fishpool Street Historic Area",
@@ -318,7 +333,8 @@ landmarks = {
         "time_no_ticket": 20,      # free, walking through a historic street
         "time_with_ticket": 20,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False, 
+        "have_tickets": False
     },
     16: {
         "name": "St Albans Charter Market",
@@ -326,7 +342,8 @@ landmarks = {
         "time_no_ticket": 30,      # free open-air market, browsing time
         "time_with_ticket": 30,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False,
+        "have_tickets": False
     },
     17: {
         "name": "St Albans South Signal Box",
@@ -334,7 +351,8 @@ landmarks = {
         "time_no_ticket": 15,      # viewed from outside; open days are free/donation-based
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False, 
+        "have_tickets": False
     },
     18: {
         "name": "Redbournbury Watermill & Bakery",
@@ -342,7 +360,8 @@ landmarks = {
         "time_no_ticket": 20,      # estimated - free to look around bakery/shop area
         "time_with_ticket": 45,    # guided mill tour on open days
         "ticket_cost": 4.00,       # estimated - typical small working-mill tour price
-        "visited": False
+        "visited": False, 
+        "have_tickets": False
     },
     19: {
         "name": "The Vintry Garden",
@@ -350,7 +369,8 @@ landmarks = {
         "time_no_ticket": 10,      # free small public garden
         "time_with_ticket": 10,
         "ticket_cost": 0.00,
-        "visited": False
+        "visited": False, 
+        "have_tickets": False
     }
 }
 
@@ -457,101 +477,86 @@ for i in range (20):
 ###### Iteration 3
 user_selected_landmarks = []
 
-print("Now you can select a landmark to visit by entering its corresponding number (0-19).")
-print("You will be asked to enter the landmark number one by one. If you want to stop selecting landmarks, you can enter 'done'.")
-print("You can also decide whether you want to visit the landmark with or without a ticket. If you choose to visit with a ticket, the time and cost will be added to your total time and budget limit.")
-print("Please note that you cannot select the same landmark more than once. If you try to select a landmark that you have already selected, you will be asked to choose a different landmark.")
-print("The first landmark you select will be your starting point, and the last landmark will be your ending point. You can change that at the end of the selection process if you want to.")
-print("You can also change your mind about visiting a landmark with or without a ticket after you have entered 'done'.")
-print("you cannot input done as your first input, you must select at least one landmark to visit.")
+def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks):
+    print("Now you can select a landmark to visit by entering its corresponding number (0-19).")
+    print("Enter 'done' once you want to stop selecting landmarks.")
 
-user_landmark_selection = input("Enter a landmark number (0-19): ")
-
-while user_landmark_selection.lower() == "done":
-    print("You have not selected any landmarks to visit.")
     user_landmark_selection = input("Enter a landmark number (0-19): ")
-def manual_landmark_selection():
+
+    while user_landmark_selection.lower() == "done" and not user_selected_landmarks:
+        print("You have not selected any landmarks yet. You must select at least one before finishing.")
+        user_landmark_selection = input("Enter a landmark number (0-19): ")
+
     while user_landmark_selection.lower() != "done":
         user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
 
         while user_landmark_selection > 19:
             print(f"Invalid. {user_landmark_selection} is not in the range of 0-19")
-            print("Try again")
-            user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
-            if user_landmark_selection.lower() == "done":
-                break
+            user_landmark_selection = input("Enter a landmark number (0-19): ")
             user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
 
-        if landmarks[user_landmark_selection]["ticket_cost"] == 0.00:
+        if user_landmark_selection in user_selected_landmarks:
+            print(f"You have already selected {landmarks[user_landmark_selection]['name']}. Please choose a different landmark.")
+            user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish: ")
+            continue
+
+        chosen_landmark = landmarks[user_landmark_selection]
+
+        if chosen_landmark["ticket_cost"] == 0.00:
             user_wants_ticket = "no"
-            print(f"{landmarks[user_landmark_selection]['name']} does not offer any tickets for entry, so you will be visiting without a ticket.")
+            number_of_tickets = 0
         else:
-            user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
+            user_wants_ticket = input(f"Do you want to visit {chosen_landmark['name']} with a ticket? (yes/no): ")
             while user_wants_ticket.lower() not in ["yes", "no"]:
                 print(f"Invalid. {user_wants_ticket} is not a valid response. Please enter 'yes' or 'no'.")
-                user_wants_ticket = input(f"Do you want to visit {landmarks[user_landmark_selection]['name']} with a ticket? (yes/no): ")
+                user_wants_ticket = input(f"Do you want to visit {chosen_landmark['name']} with a ticket? (yes/no): ")
 
-        if user_wants_ticket.lower() == "yes":
-            number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
-            number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
-            while number_of_tickets > 6:
-                print(f"Invalid.  you cannot purchase {number_of_tickets} tickets for {landmarks[user_landmark_selection]['name']}.")
-                print("Try again")
-                number_of_tickets = input(f"How many tickets do you want to purchase for {landmarks[user_landmark_selection]['name']}? You can purchase a maximum of 6 tickets: ")
+            if user_wants_ticket.lower() == "yes":
+                number_of_tickets = input(f"How many tickets do you want? (max 6): ")
                 number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
-            budget_limit -= landmarks[user_landmark_selection]["ticket_cost"] * number_of_tickets
-            time_limit -= landmarks[user_landmark_selection]["time_with_ticket"]
+                while number_of_tickets > 6 or number_of_tickets < 1:
+                    print(f"Invalid. You cannot purchase {number_of_tickets} tickets.")
+                    number_of_tickets = input(f"How many tickets do you want? (max 6): ")
+                    number_of_tickets = int(data_type_validation(number_of_tickets, "tickets"))
+            else:
+                number_of_tickets = 0
+
+        # Work out the cost/time this choice WOULD add, without committing to it yet
+        if user_wants_ticket.lower() == "yes":
+            added_cost = chosen_landmark["ticket_cost"] * number_of_tickets
+            added_time = chosen_landmark["time_with_ticket"]
+            chosen_landmark["have_tickets"] = True
         else:
-            time_limit -= landmarks[user_landmark_selection]["time_no_ticket"]
+            added_cost = 0.00
+            added_time = chosen_landmark["time_no_ticket"]
 
-        while budget_limit < 0 or time_limit < 0:
+        prospective_budget = budget_limit - added_cost
+        prospective_time = time_limit - added_time
 
-            if budget_limit < 0 and time_limit < 0:
-                print("You have exceeded both your budget and time limit. Please select a different landmark or choose to visit without a ticket.")
-            elif budget_limit < 0:
-                print("You have exceeded your budget limit. Please select a different landmark or choose to visit without a ticket.")
-            elif time_limit < 0:
-                print("You have exceeded your time limit. Please select a different landmark or choose to visit without a ticket.")
-            
-            print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
-
-            if user_wants_ticket.lower() == "yes":
-                budget_limit += landmarks[user_landmark_selection]["ticket_cost"] * number_of_tickets
-                time_limit += landmarks[user_landmark_selection]["time_with_ticket"]
+        # Check BEFORE committing - so there is nothing to revert if it fails
+        if prospective_budget < 0 or prospective_time < 0:
+            if prospective_budget < 0 and prospective_time < 0:
+                print("This choice would exceed both your budget and time limit.")
+            elif prospective_budget < 0:
+                print(f"This choice would exceed your budget limit by £{abs(prospective_budget):.2f}.")
             else:
-                time_limit += landmarks[user_landmark_selection]["time_no_ticket"]
-
-            if not user_selected_landmarks :
-                print("You have not selected any landmarks to visit.")
-                user_landmark_selection = input("Enter a landmark number (0-19): ")
-                while user_landmark_selection.lower() == "done":
-                    print("You have not selected any landmarks to visit.")
-                    user_landmark_selection = input("Enter a landmark number (0-19): ")
-            else:
-                user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
-
-            manual_landmark_selection()
-
-
-        if user_landmark_selection.lower() == "done":
-            break
-        else:
-            if user_landmark_selection not in user_selected_landmarks:
-                user_selected_landmarks.append(user_landmark_selection)
-            else:
-                print(f"You have already selected {landmarks[user_landmark_selection]['name']}. Please choose a different landmark.")
-
-            if user_wants_ticket.lower() == "yes":
-                print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} with a ticket, which costs £{landmarks[user_landmark_selection]['ticket_cost']:.2f}.")
-            elif landmarks[user_landmark_selection]["ticket_cost"] == 0.00:
-                print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} without a ticket, which is free of charge.")
-            else:
-                print(f"You have selected to visit {landmarks[user_landmark_selection]['name']} without a ticket.")
+                print(f"This choice would exceed your time limit by {abs(prospective_time)} minutes.")
 
             print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
+            user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish: ")
+            continue
 
-            user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish selecting landmarks: ")
+        # Only commit once we know it's safe
+        budget_limit = prospective_budget
+        time_limit = prospective_time
+        user_selected_landmarks.append(user_landmark_selection)
+        landmarks[user_landmark_selection]["visited"] = True
 
+        print(f"You have selected {chosen_landmark['name']}.")
+        print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
 
+        user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish: ")
 
+    return budget_limit, time_limit, user_selected_landmarks
 
+budget_limit, time_limit, user_selected_landmarks = manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
