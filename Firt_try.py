@@ -557,6 +557,73 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
 
         user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish: ")
 
+
     return budget_limit, time_limit, user_selected_landmarks
 
 budget_limit, time_limit, user_selected_landmarks = manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
+
+for i in user_selected_landmarks:
+    if landmarks[i]["have_tickets"]:
+        print(f"You have selected {landmarks[i]['name']} with a ticket.")
+    else:
+        print(f"You have selected {landmarks[i]['name']} without a ticket.")
+
+print("Now you can review your selected landmarks and make any changes if needed.")
+
+user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
+
+while user_review_selection.lower() not in ["yes", "no"]:
+    print(f"Invalid. {user_review_selection} is not a valid response. Please enter 'yes' or 'no'.")
+    user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
+
+while user_review_selection.lower() == "yes":
+    opperation = input("Do you want to add or remove a landmark? (add/remove): ")
+
+    while opperation.lower() not in ["add", "remove"]:
+        print(f"Invalid. {opperation} is not a valid response. Please enter 'add' or 'remove'.")
+        opperation = input("Do you want to add or remove a landmark? (add/remove): ")
+
+    if opperation.lower() == "add":
+        budget_limit, time_limit, user_selected_landmarks = manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
+    else:
+        if len(user_selected_landmarks) == 1:
+            print("You have only one landmark selected. You cannot remove it as you must have at least one landmark selected.")
+        else:
+            print("Here are your currently selected landmarks:")
+            for i in user_selected_landmarks:
+                print(f"{i} : {landmarks[i]['name']}")
+
+            landmark_to_remove = input("Enter the number of the landmark you want to remove: ")
+            landmark_to_remove = int(data_type_validation(landmark_to_remove, "landmark"))
+
+            while landmark_to_remove not in user_selected_landmarks:
+                print(f"Invalid. {landmark_to_remove} is not in your selected landmarks.")
+                landmark_to_remove = input("Enter the number of the landmark you want to remove: ")
+                landmark_to_remove = int(data_type_validation(landmark_to_remove, "landmark"))
+
+            # Revert the budget and time for the removed landmark
+            if landmarks[landmark_to_remove]["have_tickets"]:
+                budget_limit += landmarks[landmark_to_remove]["ticket_cost"]
+                time_limit += landmarks[landmark_to_remove]["time_with_ticket"]
+            else:
+                time_limit += landmarks[landmark_to_remove]["time_no_ticket"]
+
+            user_selected_landmarks.remove(landmark_to_remove)
+            landmarks[landmark_to_remove]["visited"] = False
+            landmarks[landmark_to_remove]["have_tickets"] = False
+
+            print(f"You have removed {landmarks[landmark_to_remove]['name']} from your selection.")
+            print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
+
+    for i in user_selected_landmarks:
+        if landmarks[i]["have_tickets"]:
+            print(f"You have selected {landmarks[i]['name']} with a ticket.")
+        else:
+            print(f"You have selected {landmarks[i]['name']} without a ticket.")
+
+    user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
+
+    while user_review_selection.lower() not in ["yes", "no"]:
+        print(f"Invalid. {user_review_selection} is not a valid response. Please enter 'yes' or 'no'.")
+        user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
+
