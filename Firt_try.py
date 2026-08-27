@@ -25,6 +25,8 @@ def data_type_validation(parameter, location):
             parameter = input("Enter a landmark number (0-19): ")
         elif location == "tickets":
             parameter = input("How many tickets do you want to purchase? you cannot purchase more than 6 tickets for a landmark: ")
+        elif location == "manual_landmark":
+            parameter = input("Try again: ")
     return parameter
 
 print("Welcome to the St Albans Landmarks Explorer!")
@@ -616,12 +618,12 @@ while user_review_selection.lower() == "yes":
                 print(f"{i} : {landmarks[i]['name']}")
 
             landmark_to_remove = input("Enter the number of the landmark you want to remove: ")
-            landmark_to_remove = int(data_type_validation(landmark_to_remove, "landmark"))
+            landmark_to_remove = int(data_type_validation(landmark_to_remove, "manual_landmark"))
 
             while landmark_to_remove not in user_selected_landmarks:
                 print(f"Invalid. {landmark_to_remove} is not in your selected landmarks.")
                 landmark_to_remove = input("Enter the number of the landmark you want to remove: ")
-                landmark_to_remove = int(data_type_validation(landmark_to_remove, "landmark"))
+                landmark_to_remove = int(data_type_validation(landmark_to_remove, "manual_landmark"))
 
             # Revert the budget and time for the removed landmark
             if landmarks[landmark_to_remove]["have_tickets"]:
@@ -649,5 +651,47 @@ while user_review_selection.lower() == "yes":
     while user_review_selection.lower() not in ["yes", "no"]:
         print(f"Invalid. {user_review_selection} is not a valid response. Please enter 'yes' or 'no'.")
         user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
+
+
+def starting_landmark():
+    print("Now you can select you starting landmark.")
+
+    for i in user_selected_landmarks:
+                    print(f"{i} : {landmarks[i]['name']}")
+
+    starting_node = input("Enter the idex of the landmark that you want to be your starting node: ")
+    starting_node = int(data_type_validation(starting_node, "manual_landmark"))
+
+    while starting_node not in user_selected_landmarks:
+        print("the starting node was not in your selected landmarks")
+        starting_node = input("Enter the idex of the landmark that you want to be your starting node: ")
+        starting_node = int(data_type_validation(starting_node, "manual_landmark"))
+
+    user_selected_landmarks.remove(starting_node)
+    user_selected_landmarks.insert(0, starting_node)
+
+    print(f"You have selected {landmarks[starting_node]['name']} for your starting node")
+
+    for i in user_selected_landmarks:
+        print(f"{i} : {landmarks[i]['name']}")
+    
+
+    change_starting_node = input("do you want to make any change to the starting node (yes/no) : ")
+
+    while change_starting_node.lower() not in ["yes", "no"]:
+        print("Invalid. You can only input yes or no.")
+        change_starting_node = input("do you want to make any change to the satarting node (yes/no) : ")
+
+    while change_starting_node.lower() == "yes":
+        starting_node = starting_landmark()
+        change_starting_node = input("do you want to make any change to the starting node (yes/no) : ")
+        
+        while change_starting_node.lower() not in ["yes", "no"]:
+            print("Invalid. You can only input yes or no.")
+            change_starting_node = input("do you want to make any change to the satarting node (yes/no) : ")
+
+    return starting_node
+
+starting_node = starting_landmark()
 
 
