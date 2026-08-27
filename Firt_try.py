@@ -199,7 +199,8 @@ landmarks = {
         "time_with_ticket": 60,    # optional donation-based tower tour / guided tour adds time
         "ticket_cost": 5.00,       # estimated - optional tower tour donation, not compulsory
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     1: {
         "name": "Verulamium Park and Verulamium Lake",
@@ -208,7 +209,9 @@ landmarks = {
         "time_with_ticket": 40,    # no ticketed element to the park itself
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
+
     },
     2: {
         "name": "The Roman Theatre of Verulamium",
@@ -217,7 +220,8 @@ landmarks = {
         "time_with_ticket": 30,
         "ticket_cost": 3.00,       # confirmed via Gorhambury Estate site (adult price)
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     3: {
         "name": "Verulamium Museum",
@@ -226,7 +230,8 @@ landmarks = {
         "time_with_ticket": 75,
         "ticket_cost": 10.00,      # confirmed via stalbansmuseums.org.uk (adult price)
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     4: {
         "name": "The Roman Wall of St Albans",
@@ -235,7 +240,8 @@ landmarks = {
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     5: {
         "name": "The Hypocaust and Roman Mosaic",
@@ -244,7 +250,8 @@ landmarks = {
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     6: {
         "name": "St Albans Clock Tower",
@@ -253,7 +260,8 @@ landmarks = {
         "time_with_ticket": 25,    # climbing the tower has a small entry fee (seasonal)
         "ticket_cost": 1.00,       # estimated - small councils typically charge ~£1 for tower climbs
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     7: {
         "name": "Abbey Gateway (The Great Gate)",
@@ -262,7 +270,8 @@ landmarks = {
         "time_with_ticket": 10,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     8: {
         "name": "Ye Olde Fighting Cocks Inn",
@@ -271,7 +280,8 @@ landmarks = {
         "time_with_ticket": 30,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     9: {
         "name": "St Albans Museum + Gallery (Old Town Hall)",
@@ -280,7 +290,8 @@ landmarks = {
         "time_with_ticket": 45,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     10: {
         "name": "Sopwell Nunnery Ruins (Lee Hall)",
@@ -289,7 +300,8 @@ landmarks = {
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     11: {
         "name": "Old Gorhambury House",
@@ -298,7 +310,8 @@ landmarks = {
         "time_with_ticket": 10,
         "ticket_cost": 0.00,
         "visited": False, 
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     12: {
         "name": "Gorhambury House",
@@ -307,7 +320,8 @@ landmarks = {
         "time_with_ticket": 90,    # estimated - stately home guided tours typically ~1.5hrs
         "ticket_cost": 12.00,      # estimated - comparable to similar small stately home tours
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     13: {
         "name": "St Michael's Church",
@@ -316,7 +330,8 @@ landmarks = {
         "time_with_ticket": 20,
         "ticket_cost": 0.00,
         "visited": False, 
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     14: {
         "name": "St Peter's Church",
@@ -325,7 +340,8 @@ landmarks = {
         "time_with_ticket": 20,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     15: {
         "name": "Fishpool Street Historic Area",
@@ -334,7 +350,8 @@ landmarks = {
         "time_with_ticket": 20,
         "ticket_cost": 0.00,
         "visited": False, 
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     16: {
         "name": "St Albans Charter Market",
@@ -343,7 +360,8 @@ landmarks = {
         "time_with_ticket": 30,
         "ticket_cost": 0.00,
         "visited": False,
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     17: {
         "name": "St Albans South Signal Box",
@@ -352,7 +370,8 @@ landmarks = {
         "time_with_ticket": 15,
         "ticket_cost": 0.00,
         "visited": False, 
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     18: {
         "name": "Redbournbury Watermill & Bakery",
@@ -361,7 +380,8 @@ landmarks = {
         "time_with_ticket": 45,    # guided mill tour on open days
         "ticket_cost": 4.00,       # estimated - typical small working-mill tour price
         "visited": False, 
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     },
     19: {
         "name": "The Vintry Garden",
@@ -370,7 +390,8 @@ landmarks = {
         "time_with_ticket": 10,
         "ticket_cost": 0.00,
         "visited": False, 
-        "have_tickets": False
+        "have_tickets": False,
+        "number_of_tickets": 0
     }
 }
 
@@ -525,7 +546,6 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
         if user_wants_ticket.lower() == "yes":
             added_cost = chosen_landmark["ticket_cost"] * number_of_tickets
             added_time = chosen_landmark["time_with_ticket"]
-            chosen_landmark["have_tickets"] = True
         else:
             added_cost = 0.00
             added_time = chosen_landmark["time_no_ticket"]
@@ -551,6 +571,8 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
         time_limit = prospective_time
         user_selected_landmarks.append(user_landmark_selection)
         landmarks[user_landmark_selection]["visited"] = True
+        chosen_landmark["have_tickets"] = (user_wants_ticket.lower() == "yes")
+        chosen_landmark["number_of_tickets"] = number_of_tickets
 
         print(f"You have selected {chosen_landmark['name']}.")
         print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
@@ -564,7 +586,7 @@ budget_limit, time_limit, user_selected_landmarks = manual_landmark_selection(bu
 
 for i in user_selected_landmarks:
     if landmarks[i]["have_tickets"]:
-        print(f"You have selected {landmarks[i]['name']} with a ticket.")
+        print(f"You have selected {landmarks[i]['name']} with {landmarks[i]["number_of_tickets"]} ticket(s).")
     else:
         print(f"You have selected {landmarks[i]['name']} without a ticket.")
 
@@ -603,7 +625,7 @@ while user_review_selection.lower() == "yes":
 
             # Revert the budget and time for the removed landmark
             if landmarks[landmark_to_remove]["have_tickets"]:
-                budget_limit += landmarks[landmark_to_remove]["ticket_cost"]
+                budget_limit += landmarks[landmark_to_remove]["ticket_cost"] * landmarks[landmark_to_remove]["number_of_tickets"]
                 time_limit += landmarks[landmark_to_remove]["time_with_ticket"]
             else:
                 time_limit += landmarks[landmark_to_remove]["time_no_ticket"]
@@ -611,6 +633,7 @@ while user_review_selection.lower() == "yes":
             user_selected_landmarks.remove(landmark_to_remove)
             landmarks[landmark_to_remove]["visited"] = False
             landmarks[landmark_to_remove]["have_tickets"] = False
+            landmarks[landmark_to_remove]["number_of_tickets"] = 0
 
             print(f"You have removed {landmarks[landmark_to_remove]['name']} from your selection.")
             print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
@@ -626,4 +649,5 @@ while user_review_selection.lower() == "yes":
     while user_review_selection.lower() not in ["yes", "no"]:
         print(f"Invalid. {user_review_selection} is not a valid response. Please enter 'yes' or 'no'.")
         user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
+
 
