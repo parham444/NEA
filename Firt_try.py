@@ -695,3 +695,20 @@ def starting_landmark():
 starting_node = starting_landmark()
 
 
+# start of Travelling salesman problem implementation:
+
+def travelling_salesman_problem(starting_node, user_selected_landmarks):
+    #stage one:
+    placeholder = starting_node
+    remaining_landmarks = user_selected_landmarks
+    remaining_landmarks.remove(starting_node)
+
+    route_so_far = [starting_node]
+
+    return remaining_landmarks
+
+remaining_landmarks = travelling_salesman_problem(starting_node, user_selected_landmarks)
+
+print(remaining_landmarks)
+
+
