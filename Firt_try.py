@@ -705,10 +705,37 @@ def travelling_salesman_problem(starting_node, user_selected_landmarks):
 
     route_so_far = [starting_node]
 
-    return remaining_landmarks
+    walking_time = 0.0
+    total_distance = 0.0
 
-remaining_landmarks = travelling_salesman_problem(starting_node, user_selected_landmarks)
+    while remaining_landmarks:
+        closest_landmark = None
+        closest_distance = float('inf')
 
-print(remaining_landmarks)
+        for landmark in remaining_landmarks:
+            distance = distances[placeholder][landmark]
+            if distance < closest_distance:
+                closest_distance = distance
+                closest_landmark = landmark
+
+        route_so_far.append(closest_landmark)
+        placeholder = closest_landmark
+        remaining_landmarks.remove(closest_landmark)
+
+        total_distance += closest_distance
+
+    walking_time = total_distance / 3.1 * 60  # Convert distance to time in minutes (assuming average walking speed of 3.1 mph)
+
+
+    return route_so_far, total_distance, walking_time
+
+route_so_far, total_distance, walking_time = travelling_salesman_problem(starting_node, user_selected_landmarks)
+
+print(f"Route: {route_so_far}")
+print(f"Total Distance: {total_distance}")
+print(f"Walking Time: {walking_time} minutes")
+
+
+
 
 
