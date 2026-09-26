@@ -421,6 +421,40 @@ distances = [
     [0.1, 0.5, 0.8, 0.7, 0.6, 0.6, 0.1, 0.1, 0.3, 0.1, 0.8, 2.5, 2.7, 0.7, 0.5, 0.3, 0.3, 0.6, 4.0, 0.0] 
 ]
 
+# start of Travelling salesman problem implementation:
+
+def travelling_salesman_problem(starting_node, user_selected_landmarks):
+    #stage one:
+    placeholder = starting_node
+    remaining_landmarks = user_selected_landmarks.copy()
+    remaining_landmarks.remove(starting_node)
+
+    route_so_far = [starting_node]
+
+    walking_time = 0.0
+    total_distance = 0.0
+
+    while remaining_landmarks:
+        closest_landmark = None
+        closest_distance = float('inf')
+
+        for landmark in remaining_landmarks:
+            distance = distances[placeholder][landmark]
+            if distance < closest_distance:
+                closest_distance = distance
+                closest_landmark = landmark
+
+        route_so_far.append(closest_landmark)
+        placeholder = closest_landmark
+        remaining_landmarks.remove(closest_landmark)
+
+        total_distance += closest_distance
+
+    walking_time = total_distance / 3.1 * 60  # Convert distance to time in minutes (assuming average walking speed of 3.1 mph)
+
+
+    return route_so_far, total_distance, walking_time
+
 #parts 1 and 2:
 
 #for i in range (20):
@@ -501,6 +535,11 @@ for i in range (20):
 user_selected_landmarks = []
 
 def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks):
+
+    route_so_far = []
+    total_distance = 0.0
+    walking_time = 0.0
+
     print("Now you can select a landmark to visit by entering its corresponding number (0-19).")
     print("Enter 'done' once you want to stop selecting landmarks.")
 
@@ -511,6 +550,7 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
         user_landmark_selection = input("Enter a landmark number (0-19): ")
 
     while user_landmark_selection.lower() != "done":
+
         user_landmark_selection = int(data_type_validation(user_landmark_selection, "landmark"))
 
         while user_landmark_selection > 19:
@@ -544,7 +584,7 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
             else:
                 number_of_tickets = 0
 
-        # Work out the cost/time this choice WOULD add, without committing to it yet
+        # Work out the cost/time this choice would add, BEFORE touching the real totals
         if user_wants_ticket.lower() == "yes":
             added_cost = chosen_landmark["ticket_cost"] * number_of_tickets
             added_time = chosen_landmark["time_with_ticket"]
@@ -552,10 +592,21 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
             added_cost = 0.00
             added_time = chosen_landmark["time_no_ticket"]
 
-        prospective_budget = budget_limit - added_cost
-        prospective_time = time_limit - added_time
+        # --- Tentatively commit, so the TSP function can see this landmark ---
+        user_selected_landmarks.append(user_landmark_selection)
+        landmarks[user_landmark_selection]["visited"] = True
+        chosen_landmark["have_tickets"] = (user_wants_ticket.lower() == "yes")
+        chosen_landmark["number_of_tickets"] = number_of_tickets
 
-        # Check BEFORE committing - so there is nothing to revert if it fails
+        # Recalculate the WHOLE route fresh, now that it includes the new landmark
+        route_so_far, total_distance, walking_time = travelling_salesman_problem(
+            user_selected_landmarks[0], user_selected_landmarks
+        )
+
+        prospective_budget = budget_limit - added_cost
+        prospective_time = (time_limit - added_time) - walking_time
+
+        # --- Check ---
         if prospective_budget < 0 or prospective_time < 0:
             if prospective_budget < 0 and prospective_time < 0:
                 print("This choice would exceed both your budget and time limit.")
@@ -564,23 +615,27 @@ def manual_landmark_selection(budget_limit, time_limit, user_selected_landmarks)
             else:
                 print(f"This choice would exceed your time limit by {abs(prospective_time)} minutes.")
 
+            # --- Roll back the tentative commit (nothing else needs reverting) ---
+            user_selected_landmarks.remove(user_landmark_selection)
+            landmarks[user_landmark_selection]["visited"] = False
+            landmarks[user_landmark_selection]["have_tickets"] = False
+            landmarks[user_landmark_selection]["number_of_tickets"] = 0
+
             print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
             user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish: ")
             continue
 
-        # Only commit once we know it's safe
+        # --- Only now commit the real budget/time ---
         budget_limit = prospective_budget
-        time_limit = prospective_time
-        user_selected_landmarks.append(user_landmark_selection)
-        landmarks[user_landmark_selection]["visited"] = True
-        chosen_landmark["have_tickets"] = (user_wants_ticket.lower() == "yes")
-        chosen_landmark["number_of_tickets"] = number_of_tickets
+        time_limit = time_limit - added_time   # walking is never stored here; it's recalculated fresh each round
 
         print(f"You have selected {chosen_landmark['name']}.")
-        print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
+        print(f"Current budget limit: £{budget_limit:.2f}")
+        print(f"Time remaining after accounting for walking: {time_limit - walking_time} minutes.")
+        print(f"Current route: {', '.join([landmarks[i]['name'] for i in route_so_far])}")
+        print(f"Total Distance: {total_distance} miles, Walking Time: {walking_time} minutes.")
 
         user_landmark_selection = input("Enter a landmark number (0-19) or 'done' to finish: ")
-
 
     return budget_limit, time_limit, user_selected_landmarks
 
@@ -695,41 +750,9 @@ def starting_landmark():
 starting_node = starting_landmark()
 
 
-# start of Travelling salesman problem implementation:
+# working with travelling salesman:
 
-def travelling_salesman_problem(starting_node, user_selected_landmarks):
-    #stage one:
-    placeholder = starting_node
-    remaining_landmarks = user_selected_landmarks
-    remaining_landmarks.remove(starting_node)
-
-    route_so_far = [starting_node]
-
-    walking_time = 0.0
-    total_distance = 0.0
-
-    while remaining_landmarks:
-        closest_landmark = None
-        closest_distance = float('inf')
-
-        for landmark in remaining_landmarks:
-            distance = distances[placeholder][landmark]
-            if distance < closest_distance:
-                closest_distance = distance
-                closest_landmark = landmark
-
-        route_so_far.append(closest_landmark)
-        placeholder = closest_landmark
-        remaining_landmarks.remove(closest_landmark)
-
-        total_distance += closest_distance
-
-    walking_time = total_distance / 3.1 * 60  # Convert distance to time in minutes (assuming average walking speed of 3.1 mph)
-
-
-    return route_so_far, total_distance, walking_time
-
-route_so_far, total_distance, walking_time = travelling_salesman_problem(starting_node, user_selected_landmarks)
+route_so_far, total_distance, walking_time = travelling_salesman_problem(user_selected_landmarks[0], user_selected_landmarks)
 
 print(f"Route: {route_so_far}")
 print(f"Total Distance: {total_distance}")
