@@ -693,8 +693,14 @@ while user_review_selection.lower() == "yes":
             landmarks[landmark_to_remove]["number_of_tickets"] = 0
 
             print(f"You have removed {landmarks[landmark_to_remove]['name']} from your selection.")
-            print(f"Current budget limit: £{budget_limit:.2f}, Current time limit: {time_limit} minutes.")
 
+            # Recalculate the route after removal (Currently, the starting node is assumed to be the first in the list, also current time limit does not include walking time, so we need to recalculate it)
+
+            route_so_far, total_distance, walking_time = travelling_salesman_problem(user_selected_landmarks[0], user_selected_landmarks)
+            print(f"Updated route: {', '.join([landmarks[i]['name'] for i in route_so_far])}")
+            print(f"Current budget limit: £{budget_limit:.2f}, Time remaining after accounting for walking: {time_limit - walking_time} minutes.")
+            print(f"Total Distance: {total_distance} miles, Walking Time: {walking_time} minutes.")
+            
     for i in user_selected_landmarks:
         if landmarks[i]["have_tickets"]:
             print(f"You have selected {landmarks[i]['name']} with a ticket.")
@@ -707,7 +713,7 @@ while user_review_selection.lower() == "yes":
         print(f"Invalid. {user_review_selection} is not a valid response. Please enter 'yes' or 'no'.")
         user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
 
-
+# this part must be removed @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 def starting_landmark():
     print("Now you can select you starting landmark.")
 
@@ -749,6 +755,7 @@ def starting_landmark():
 
 starting_node = starting_landmark()
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 # working with travelling salesman:
 
