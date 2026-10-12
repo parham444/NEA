@@ -675,49 +675,9 @@ while user_review_selection.lower() == "yes":
         print(f"Invalid. {user_review_selection} is not a valid response. Please enter 'yes' or 'no'.")
         user_review_selection = input("Do you want to review your selected landmarks? (yes/no): ")
 
-# this part must be removed @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-def starting_landmark():
-    print("Now you can select you starting landmark.")
+#saving the selected landmarks to the database
+save_landmarks_to_db(landmarks)
 
-    for i in user_selected_landmarks:
-                    print(f"{i} : {landmarks[i]['name']}")
-
-    starting_node = input("Enter the idex of the landmark that you want to be your starting node: ")
-    starting_node = int(data_type_validation(starting_node, "manual_landmark"))
-
-    while starting_node not in user_selected_landmarks:
-        print("the starting node was not in your selected landmarks")
-        starting_node = input("Enter the idex of the landmark that you want to be your starting node: ")
-        starting_node = int(data_type_validation(starting_node, "manual_landmark"))
-
-    user_selected_landmarks.remove(starting_node)
-    user_selected_landmarks.insert(0, starting_node)
-
-    print(f"You have selected {landmarks[starting_node]['name']} for your starting node")
-
-    for i in user_selected_landmarks:
-        print(f"{i} : {landmarks[i]['name']}")
-    
-
-    change_starting_node = input("do you want to make any change to the starting node (yes/no) : ")
-
-    while change_starting_node.lower() not in ["yes", "no"]:
-        print("Invalid. You can only input yes or no.")
-        change_starting_node = input("do you want to make any change to the satarting node (yes/no) : ")
-
-    while change_starting_node.lower() == "yes":
-        starting_node = starting_landmark()
-        change_starting_node = input("do you want to make any change to the starting node (yes/no) : ")
-        
-        while change_starting_node.lower() not in ["yes", "no"]:
-            print("Invalid. You can only input yes or no.")
-            change_starting_node = input("do you want to make any change to the satarting node (yes/no) : ")
-
-    return starting_node
-
-starting_node = starting_landmark()
-
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 # working with travelling salesman:
 
