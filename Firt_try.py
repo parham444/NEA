@@ -1,5 +1,6 @@
 # SQLite implementation for Python:
 import sqlite3
+import pygame
 
 def initialise_landmarks():
 
@@ -247,6 +248,7 @@ def get_user_time_limit():
     return time_limit
 
 time_limit = get_user_time_limit()
+initial_time_limit = time_limit
 
 con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
 
@@ -256,6 +258,7 @@ while con_time_limit.lower() not in ["yes", "no"]:
 
 while con_time_limit.lower() == "no":
     time_limit = get_user_time_limit()
+    initial_time_limit = time_limit
     con_time_limit = input("Do you want to continue with the time limit you have entered? (yes/no): ")
     while con_time_limit.lower() not in ["yes", "no"]:
         print(f"Invalid. {con_time_limit} is not a valid response. Please enter 'yes' or 'no'.")
@@ -288,6 +291,7 @@ def get_user_budget_limit():
     return budget_limit
 
 budget_limit = get_user_budget_limit()
+initial_budget_limit = budget_limit
 
 con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
 
@@ -297,6 +301,7 @@ while con_budget_limit.lower() not in ["yes", "no"]:
 
 while con_budget_limit.lower() == "no":
     budget_limit = get_user_budget_limit()
+    initial_budget_limit = budget_limit
     con_budget_limit = input("Do you want to continue with the budget limit you have entered? (yes/no): ")
     while con_budget_limit.lower() not in ["yes", "no"]:
         print(f"Invalid. {con_budget_limit} is not a valid response. Please enter 'yes' or 'no'.")
@@ -683,9 +688,116 @@ save_landmarks_to_db(landmarks)
 
 route_so_far, total_distance, walking_time = travelling_salesman_problem(user_selected_landmarks[0], user_selected_landmarks)
 
-print(f"Route: {route_so_far}")
-print(f"Total Distance: {total_distance}")
-print(f"Walking Time: {walking_time} minutes")
+
+
+
+
+# storing landmark grid references as a Python dictionary
+
+landmark_positions = {
+    0: ("E", 6),
+    1: ("D", 3),
+    2: ("E", 3),
+    3: ("D", 4),
+    4: ("C", 6),
+    5: ("D", 6),
+    6: ("E", 7),
+    7: ("F", 7),
+    8: ("E", 8),
+    9: ("F", 8),
+    10: ("G", 4),
+    11: ("F", 4),
+    12: ("H", 5),
+    13: ("G", 7),
+    14: ("G", 9),
+    15: ("G", 8),
+    16: ("D", 9),
+    17: ("D", 10),
+    18: ("G", 1),
+    19: ("A", 12)
+}
+
+# converting landmark grid references to pixel coordinates
+
+margin = 50  
+
+def convert_to_pixels():
+    pixel_positions = {}
+    for key in landmark_positions:
+        letter, number = landmark_positions[key]
+        x_pixel = (ord(letter) - ord('A')) * 50 + margin
+        y_pixel = number * 50 + margin
+        pixel_positions[key] = (x_pixel, y_pixel)
+    return pixel_positions
+        
+
+pixel_positions = convert_to_pixels()
+
+pygame.init()
+pygame.font.init()
+screen = pygame.display.set_mode((800, 700))
+font = pygame.font.SysFont(None, 20)
+legend_x =450
+legend_y = 50
+
+info_x = 450
+info_y = 620
+
+background_color = (30, 45, 80)
+
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    screen.fill(background_color)
+
+    for key in range(len(route_so_far) - 1):
+            start_key = route_so_far[key]
+            end_key = route_so_far[key + 1]
+            start_pos = pixel_positions[start_key]
+            end_pos = pixel_positions[end_key]
+            pygame.draw.line(screen, (255, 0, 0), start_pos, end_pos, 3) # colour for the route lines
+
+    for key in pixel_positions:
+        x, y = pixel_positions[key]
+        if key == user_selected_landmarks[0]:
+            pygame.draw.circle(screen, (255, 215, 0), (x, y), 10) # colour for the first selected landmark
+        elif key in user_selected_landmarks[1:]:
+            pygame.draw.circle(screen, (135, 206, 235), (x, y), 10) # colour for the landmarks in the list except the first one
+        else:
+            pygame.draw.circle(screen, (85, 85, 165), (x, y), 10) # colour for the landmarks not in the list
+
+        text_surface = font.render(str(key), True, (30, 45, 80))
+        text_rect = text_surface.get_rect(center=(x, y))
+        screen.blit(text_surface, text_rect)
+
+    line_spacing = 25 
+    for index in landmarks:
+        name = landmarks[index]["name"]
+        if index == route_so_far[0]:
+            text_surface = font.render(f"{index}: {name}, {'(with ticket)' if landmarks[index]['have_tickets'] else '(without ticket)'}", True, (255, 215, 0)) # colour for the first selected landmark
+        elif index in route_so_far[1:]:
+            text_surface = font.render(f"{index}: {name}, {'(with ticket)' if landmarks[index]['have_tickets'] else '(without ticket)'}", True, (135, 206, 235)) # colour for the landmarks in the list except the first one
+        else:
+            text_surface = font.render(f"{index}: {name}", True, (255, 255, 255)) # colour for the landmarks not in the list
+        screen.blit(text_surface, (legend_x, legend_y + index * line_spacing))
+
+    distance_text = font.render(f"Total Distance: {total_distance :.2f} miles", True, (255, 126, 95))
+    time_text = font.render(f"Time of journey: {(initial_time_limit - time_limit + walking_time):.2f} minutes", True, (234, 162, 85))
+    budget_text = font.render(f"Cost: £{(initial_budget_limit - budget_limit):.2f}", True, (147, 197, 114))
+
+    screen.blit(distance_text, (info_x, info_y))
+    screen.blit(time_text, (info_x, info_y + line_spacing))
+    screen.blit(budget_text, (info_x, info_y + 2 * line_spacing))
+
+    pygame.display.flip()
+
+
+pygame.quit()
+
 
 
 
