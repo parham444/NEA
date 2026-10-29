@@ -269,7 +269,7 @@ def get_user_budget_limit():
     budget_limit = 0
     print("Here you can submit your budget limit, you can do this by entering the amount of budget that you have into two boxes of pounds and pence.")
     print("For example, if you have £20.50, you would enter 20 into the pounds box and 50 into the pence box.")
-    print("Also you must enter your time limit in whole numbers only.")
+    print("Also you must enter your budget limit in whole numbers only.")
     pounds_box_budget_limit = input("Enter your budget limit in pounds (£): ")
     pence_box_budget_limit = input("Enter your budget limit in pence (0-99): ")
 
@@ -735,7 +735,7 @@ pixel_positions = convert_to_pixels()
 
 pygame.init()
 pygame.font.init()
-screen = pygame.display.set_mode((800, 700))
+screen = pygame.display.set_mode((880, 700))
 font = pygame.font.SysFont(None, 20)
 legend_x =450
 legend_y = 50
